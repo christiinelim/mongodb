@@ -6,9 +6,9 @@
         "dob": "1980-01-01",
         "licenseExpiryDate": "2024-12-31",
         "gender": "male",
-        "patientId": [],
-        "appointmentId": [],
-        "clinicId": []
+        "patientId": [2001],
+        "appointmentId": [3001],
+        "clinicId": [4001]
     },
     {
         "_id": 1002,
@@ -17,9 +17,9 @@
         "dob": "1979-01-01",
         "licenseExpiryDate": "2024-12-31",
         "gender": "male",
-        "patientId": [],
-        "appointmentId": [],
-        "clinicId": []
+        "patientId": [2002],
+        "appointmentId": [3002],
+        "clinicId": [4002]
     },
     {
         "_id": 1003,
@@ -28,8 +28,8 @@
         "dob": "1978-01-01",
         "licenseExpiryDate": "2024-12-31",
         "gender": "female",
-        "patientId": [],
-        "appointmentId": [],
-        "clinicId": []
+        "patientId": [2003],
+        "appointmentId": [3003],
+        "clinicId": [4003]
     }
 ]
