@@ -1,0 +1,19 @@
+[
+    {
+        "_id": 3003,
+        "name": "Eddard Shark",
+        "students": [
+            {
+                "_id": 3003,
+                "name": "Jon Snow",
+                "dob": "1999-01-01",
+                "swimmingLevel": "beginner",
+                "sessions": {
+                    "_id": 1,
+                    "date": "2021-01-01 10:00",
+                    "venue": "Yishun Swimming Complex"
+                }
+            }
+        ]
+    }
+]

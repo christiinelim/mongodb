@@ -1,0 +1,30 @@
+[
+    {
+        "_id": 6001,
+        "amount": 1000,
+        "status": "paid",
+        "datePaid": "2024-05-01 11:00",
+        "mode": "CC",
+        "patientId": [2001],
+        "appointmentId": [3001]
+    },
+    {
+        "_id": 6002,
+        "amount": 2000,
+        "status": "unpaid",
+        "datePaid": "",
+        "mode": "",
+        "patientId": [2002],
+        "appointmentId": [3002]
+    },
+    {
+        "_id": 6003,
+        "amount": 2000,
+        "status": "paid",
+        "datePaid": "2024-07-01",
+        "mode": "cash",
+        "patientId": [2003],
+        "appointmentId": [3003]
+    }
+
+]

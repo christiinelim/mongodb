@@ -1,0 +1,23 @@
+[
+    {
+        "_id": 4001,
+        "name": "Yishun Dental Clinic",
+        "location": "Yishun Street 13 #01-01",
+        "dentistId": [1001, 1002, 1003],
+        "appointmentId": [3001]
+    },
+    {
+        "_id": 4002,
+        "name": "Ang Mo Kio Dental Clinic",
+        "location": "Ang Mo Kio Street 13 #01-01",
+        "dentistId": [1001, 1002, 1003],
+        "appointmentId": [3002]
+    },
+    {
+        "_id": 4003,
+        "name": "Tampines Dental Clinic",
+        "location": "Tampines Street 13 #01-01",
+        "dentistId": [1001, 1002, 1003],
+        "appointmentId": [3003]
+    }
+]
