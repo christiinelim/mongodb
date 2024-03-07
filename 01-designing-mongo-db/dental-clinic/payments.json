@@ -3,7 +3,7 @@
         "_id": 6001,
         "amount": 1000,
         "status": "paid",
-        "datePaid": "2024-05-01 11:00",
+        "datePaid": "2024-05-01",
         "mode": "CC",
         "patientId": [2001],
         "appointmentId": [3001]
