@@ -203,3 +203,15 @@ db.restaurants.find({
     '_id': 1
 })
 ```
+
+# counting
+```
+db.listingsAndReviews.find({
+    'first_review': {
+        '$lt': ISODate("2020-01-01")
+    }
+}, {
+    'name': 1,
+    'first_review': 1
+}).count()
+```
