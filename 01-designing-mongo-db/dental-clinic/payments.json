@@ -5,8 +5,8 @@
         "status": "paid",
         "datePaid": "2024-05-01",
         "mode": "CC",
-        "patientId": [2001],
-        "appointmentId": [3001]
+        "patientId": 2001,
+        "appointmentId": 3001
     },
     {
         "_id": 6002,
@@ -14,8 +14,8 @@
         "status": "unpaid",
         "datePaid": "",
         "mode": "",
-        "patientId": [2002],
-        "appointmentId": [3002]
+        "patientId": 2002,
+        "appointmentId": 3002
     },
     {
         "_id": 6003,
@@ -23,8 +23,8 @@
         "status": "paid",
         "datePaid": "2024-07-01",
         "mode": "cash",
-        "patientId": [2003],
-        "appointmentId": [3003]
+        "patientId": 2003,
+        "appointmentId": 3003
     }
 
 ]

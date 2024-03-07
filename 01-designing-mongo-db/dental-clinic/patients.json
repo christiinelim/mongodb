@@ -5,8 +5,7 @@
         "dob": "2001-01-01",
         "gender": "female",
         "paymentId": [6001],
-        "appointmentId": [3001],
-        "dentistId": [1001],
+        "dentistId": 1001,
         "address": {
             "streetName": "Yishun Ring Road",
             "blockNumber": "666",
@@ -20,8 +19,7 @@
         "dob": "2002-01-01",
         "gender": "male",
         "paymentId": [6002],
-        "appointmentId": [3002],
-        "dentistId": [1002],
+        "dentistId": 1002,
         "address": {
             "streetName": "Ang Mo Kio Ave 2",
             "blockNumber": "888",
@@ -35,8 +33,7 @@
         "dob": "2003-01-01",
         "gender": "male",
         "paymentId": [6003],
-        "appointmentId": [3003],
-        "dentistId": [1003],
+        "dentistId": 1003,
         "address": {
             "streetName": "Tampines East Ave 10",
             "blockNumber": "111",
