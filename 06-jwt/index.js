@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const mongodb = require('mongodb');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 require('dotenv').config();
 
 // a mongoclient allows express (or any nodejs application) to send request to mongo database
@@ -32,6 +34,48 @@ async function connect (uri, dbname) {
     return db
 }
 
+function generateAccessToken(id, email){
+    // the first argument of `jwt.sign` is the payload you want 
+    // the second argument of `jwt.sign` is the token secret
+    // the third argument of `jwt.sign` is an option object
+    return jwt.sign({
+        'user_id': id,
+        'email': email
+    }, process.env.TOKEN_SECRET, {
+        'expiresIn': '3d' // w=weeks, d=days, h=hours, m=minutes
+    })
+}
+
+// this is a middleware function that check if a valid JWT has been provided
+// a middleware function has three arguments: req, res, next
+function authenticateWithJWT() {
+    const authHeader = req.headers.authorization;
+        if (authHeader) {
+            const token = authHeader.split(" ")[1];
+
+            // first argument: the token that I want to verify
+            // second argument: the token secret
+            // third argument: callback function
+            jwt.verify(token, process.env.TOKEN_SECRET, (err, payload) => {
+                if (err) {
+                    res.status(400);
+                    return res.json({
+                        "error": err
+                    })
+                } else {
+                    // the JWT is valid, forward request to the route
+                    req.payload = payload;
+                    // call the next function in /profile
+                    next();
+                }
+            })
+        } else {
+            res.status(400);
+            res.json({
+                "error": "login required to access the protected route"
+            })
+        }
+}
 
 async function main() {
     // connection string is now from env file
@@ -175,6 +219,67 @@ async function main() {
 
         res.json({
             "message": "deleted"
+        })
+    })
+
+    // users sign up and log in
+    // it is very common in RESTful API to represent a process as a document that is created because of said process
+    app.post('/user', async (req, res) => {
+        // bcrypt.hash takes two argument:
+        // 1. the plaintext that you want to hasj
+        // 2. how secure you want it
+        const hashedPassword = await bcrypt.hash(req.body.password, 12);
+        const result = await db.collection('users').insertOne({
+            'email': req.body.email,
+            'password': hashedPassword
+        });
+        res.json({
+            'result': result
+        })
+    })
+
+    app.post('/login', async (req, res) => {
+        // 1. find user by email address
+        const user = await db.collection('users').findOne({
+            email: req.body.email
+        })
+        // 2. check if the password matches
+        if (user){
+            //bcrypt.compare()
+            // first argument is the plain text
+            // second argument is the hashed version
+            if (await bcrypt.compare(req.body.password, user.password)) {
+                //valid login so generate the JWT
+                const token = generateAccessToken(user._id, user.email);
+                res.json({
+                    'token': token
+                })
+            } else {
+                res.status(400);
+                return res.json({
+                    "error": "Invalid login credentials"
+                })
+            }
+        } else {
+            res.status(400);
+            return res.json({
+                "error": "Invalid login credentials"
+            })
+        }
+        // 3. generate and send back the JWT (aka access token)
+    });
+
+    // protected route: client must provide the JWT to access
+    app.get('/profile', authenticateWithJWT, async (req, res) => {
+        res.json({
+            "message": "success in accessing protected route",
+            'payload': req.payload
+        })
+    });
+
+    app.get('/payment', authenticateWithJWT, async(req, res) => {
+        res.json({
+            "message": "accessing protected payment route"
         })
     })
 }
