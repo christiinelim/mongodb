@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 // this is a middleware function that check if a valid JWT has been provided
 // a middleware function has three arguments: req, res, next
-function authenticateWithJWT() {
+function authenticateWithJWT(req, res, next) {
     const authHeader = req.headers.authorization;
         if (authHeader) {
             const token = authHeader.split(" ")[1];
